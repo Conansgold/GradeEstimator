@@ -1,12 +1,12 @@
 package com.goldengears.gradeestimator.models;
 
+import com.goldengears.gradeestimator.abstracts.AbstractGrade;
+
 /*
 / Grade struct to hold the individual assignments name, score, and due date. This also
 / hold if the current score used is a predicted grade or the actual grade based on a boolean
  */
-public class Grade {
-    private String title;
-    private Integer score;
+public class Grade extends AbstractGrade {
     private Boolean predictive;
     private String timestamp;
 
@@ -15,22 +15,6 @@ public class Grade {
         this.score = score;
         this.predictive = predictive;
         this.timestamp = timestamp;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
     }
 
     public Boolean getPredictive() {

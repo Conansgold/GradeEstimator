@@ -8,13 +8,14 @@ import com.goldengears.gradeestimator.abstracts.AbstractGrade;
  */
 public class Grade extends AbstractGrade {
     private Boolean predictive;
-    private String timestamp;
+    private String date;
 
-    public Grade(String title, Integer score, Boolean predictive, String timestamp) {
+    public Grade(String title, Integer score, Boolean predictive, String date) {
+        this.expanded = false;
         this.title = title;
         this.score = score;
         this.predictive = predictive;
-        this.timestamp = timestamp;
+        this.date = date;
     }
 
     public Boolean getPredictive() {
@@ -25,12 +26,12 @@ public class Grade extends AbstractGrade {
         this.predictive = predictive;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getDate() {
+        return date;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class Grade extends AbstractGrade {
                 "title='" + title + '\'' +
                 ", score=" + score +
                 ", predictive=" + predictive +
-                ", timestamp='" + timestamp + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

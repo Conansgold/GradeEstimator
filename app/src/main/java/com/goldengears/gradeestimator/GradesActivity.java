@@ -10,8 +10,8 @@
  import com.goldengears.gradeestimator.adapters.GradesRecyclerAdapter;
  import com.goldengears.gradeestimator.models.Grade;
 
- import java.sql.Timestamp;
  import java.util.ArrayList;
+ import java.util.Date;
  import java.util.Random;
 
  public class GradesActivity extends AppCompatActivity {
@@ -52,11 +52,8 @@
 
          Log.d(TAG, "insertFakeGrade: Number of grades to generate " + numGrades);
          for (int i = 0; i < numGrades; i++) {
-             long offset = Timestamp.valueOf("2012-01-01 00:00:00").getTime();
-             long end = Timestamp.valueOf("2013-01-01 00:00:00").getTime();
-             long diff = end - offset + 1;
-             Timestamp rand = new Timestamp(offset + (long) (Math.random() * diff));
-             Grade grade = new Grade("Test Grade " + i, i, true, rand.toString());
+             Date date = new Date();
+             Grade grade = new Grade("Test Grade " + i, i, true, date.toString());
              mGrades.add(grade);
          }
          mGradesRecyclerAdapter.notifyDataSetChanged();

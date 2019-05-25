@@ -1,42 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="100"
-    android:background="@color/colorPrimary"
-    android:gravity="center_vertical">
+    android:layout_height="wrap_content">
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorAccent" />
-
-    <TextView
-        android:layout_width="0dp"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="70"
-        android:id="@+id/grade_title"
-        android:textSize="23sp"
-        android:lines="1"
-        android:text="Sample Text"
-        android:padding="10dp"
-        android:textColor="@color/colorPrimaryDark" />
+        android:weightSum="100"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent" />
 
-    <TextView
-        android:layout_width="0dp"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:id="@+id/grade_title"
+            android:textSize="23sp"
+            android:lines="1"
+            android:text="Sample Text"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:id="@+id/grade_timestamp"
+            android:textSize="14sp"
+            android:lines="1"
+            android:text="Sample Text"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/sub_item"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:id="@+id/grade_timestamp"
-        android:textSize="14sp"
-        android:lines="1"
-        android:text="Sample Text"
-        android:padding="10dp" />
+        android:weightSum="100"
+        android:gravity="center_vertical">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@color/colorAccent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="95"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp">
+
+            <EditText
+                android:id="@+id/edit_score"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:text="95" />
+
+            <!--TODO add a datepicker to this under an onclick listener-->
+            <EditText
+                android:id="@+id/edit_timestamp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="date" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

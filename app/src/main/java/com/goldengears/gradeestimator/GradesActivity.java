@@ -1,5 +1,6 @@
  package com.goldengears.gradeestimator;
 
+ import android.content.Context;
  import android.os.Bundle;
  import android.util.Log;
 
@@ -10,6 +11,7 @@
  import com.goldengears.gradeestimator.adapters.GradesRecyclerAdapter;
  import com.goldengears.gradeestimator.models.Grade;
 
+ import java.sql.Time;
  import java.util.ArrayList;
  import java.util.Date;
  import java.util.Random;
@@ -17,13 +19,20 @@
  public class GradesActivity extends AppCompatActivity {
 
      private static final String TAG = "GradesActivity";
+     private static Context mGradesActivityContext;
 
      //Variables
      private ArrayList<Grade> mGrades = new ArrayList<>();
      private GradesRecyclerAdapter mGradesRecyclerAdapter;
 
+
      //UI
      private RecyclerView mRecyclerView;
+
+
+     public static Context getmGradesActivityContext() {
+         return mGradesActivityContext;
+     }
 
 
     @Override
@@ -34,18 +43,11 @@
 
         initRecyclerView();
 
-//
-//        Grade grade = new Grade("Test Grade", 0, true, "The end of time");
-//        LinkedList<AbstractGrade> grades = new LinkedList<>();
-//        grades.add(grade);
-//
-//        AssignmentType type = new AssignmentType("Testing", 50, 1, 0, grades);
-//
-//        Log.d(TAG, "onCreate: Test Grade created " + grade.toString());
-//        Log.d(TAG, "onCreate: Test AssignmentType " + type.toString());
+        mGradesActivityContext = this;
 
         Random rand = new Random();
         insertFakeGrade(rand.nextInt(1000));
+
     }
 
      private void insertFakeGrade(int numGrades) {
@@ -53,7 +55,9 @@
          Log.d(TAG, "insertFakeGrade: Number of grades to generate " + numGrades);
          for (int i = 0; i < numGrades; i++) {
              Date date = new Date();
-             Grade grade = new Grade("Test Grade " + i, i, true, date.toString());
+             Time time = new Time(1, 1, 1);
+             Grade grade = new Grade("Test Grade " + i, i, true, date.toString(),
+                     time.toString());
              mGrades.add(grade);
          }
          mGradesRecyclerAdapter.notifyDataSetChanged();

@@ -62,7 +62,7 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_weight="95"
+            android:layout_weight="100"
             android:layout_height="wrap_content"
             android:layout_width="0dp">
 
@@ -73,12 +73,44 @@
                 android:inputType="number"
                 android:text="95" />
 
-            <!--TODO add a datepicker to this under an onclick listener-->
-            <EditText
-                android:id="@+id/edit_timestamp"
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="date" />
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="18"
+                    android:text="Due Date:" />
+
+                <TextView
+                    android:id="@+id/edit_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="34"
+                    android:inputType="date" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="5" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="19"
+                    android:text="Due Time:" />
+
+                <TextView
+                    android:id="@+id/edit_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="19"
+                    android:inputType="time" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -10,7 +10,7 @@ public class Grade extends AbstractGrade {
     private Boolean predictive;
     private String date;
 
-    public Grade(String title, Integer score, Boolean predictive, String date) {
+    public Grade(String title, Integer score, Boolean predictive, String date, String time) {
         this.expanded = false;
         this.title = title;
         this.score = score;

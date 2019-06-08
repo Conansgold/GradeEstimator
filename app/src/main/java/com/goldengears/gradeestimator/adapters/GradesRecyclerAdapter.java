@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.goldengears.gradeestimator.GradesActivity;
 import com.goldengears.gradeestimator.R;
 import com.goldengears.gradeestimator.models.Grade;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,6 +63,7 @@ public class GradesRecyclerAdapter extends RecyclerView.Adapter<GradesRecyclerAd
         holder.editDate.setText(dateFormat.format(date));
         holder.editTime.setText(timeFormat.format(date));
         holder.title.setText(grade.getTitle());
+        holder.editTitle.setText(grade.getTitle());
         holder.editScore.setText(grade.getScore().toString());
 
 
@@ -107,7 +111,35 @@ public class GradesRecyclerAdapter extends RecyclerView.Adapter<GradesRecyclerAd
         });
 
 
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                //TODO Add a confirm delete Alert Dialog
+                mGradesList.remove(position);
+                notifyDataSetChanged();
+                Gson gson = new Gson();
+                String data = gson.toJson(GradesActivity.getGrades());
+                GradesActivity.writeToFile(data);
+            }
+        });
+
+
+        holder.updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Integer score = Integer.valueOf(holder.editScore.getText().toString());
+                Grade grade = new Grade(holder.editTitle.getText().toString(), score,
+                        holder.finalGrade.isChecked(), holder.editDate.getText().toString(),
+                        holder.editTime.getText().toString());
+                mGradesList.set(position, grade);
+                notifyDataSetChanged();
+                Gson gson = new Gson();
+                String data = gson.toJson(GradesActivity.getGrades());
+                GradesActivity.writeToFile(data);
+            }
+        });
 
         holder.itemView.setOnClickListener(v -> {
             // Get the current state of the item
@@ -126,18 +158,24 @@ public class GradesRecyclerAdapter extends RecyclerView.Adapter<GradesRecyclerAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, timestamp, editDate, editTime;
+        private TextView title, editTitle, timestamp, editDate, editTime;
         private EditText editScore;
+        private Button deleteButton, updateButton;
         private LinearLayout subItem;
+        private CheckBox finalGrade;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.grade_title);
+            editTitle = itemView.findViewById(R.id.grade_title_edit);
+            finalGrade = itemView.findViewById(R.id.final_grade);
             timestamp = itemView.findViewById(R.id.grade_timestamp);
             editScore = itemView.findViewById(R.id.edit_score);
             editDate = itemView.findViewById(R.id.edit_date);
             editTime = itemView.findViewById(R.id.edit_time);
+            deleteButton = itemView.findViewById(R.id.delete_grade);
+            updateButton = itemView.findViewById(R.id.update_grade);
 
             subItem = itemView.findViewById(R.id.sub_item);
         }

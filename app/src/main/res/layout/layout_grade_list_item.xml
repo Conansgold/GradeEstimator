@@ -66,6 +66,26 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="Assignment title:" />
+
+                <EditText
+                    android:id="@+id/grade_title_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="60" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,6 +118,7 @@
                     android:text="Final Grade?" />
 
                 <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/final_grade"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="20" />
@@ -140,6 +161,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="19"
                     android:inputType="time" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <Button
+                    android:id="@+id/delete_grade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="46"
+                    android:text="Delete" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <Button
+                    android:id="@+id/update_grade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="46"
+                    android:text="Update" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
